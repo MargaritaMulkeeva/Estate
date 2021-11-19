@@ -1,0 +1,84 @@
+﻿<Page x:Class="Real_estate.AddPages.AddAgentsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Real_estate.AddPages"
+      mc:Ignorable="d" 
+    d:DesignHeight="900" d:DesignWidth="1440"
+      Title="AddAgentsPage" Height="900" Width="1440">
+
+    <Grid>
+        <Grid Background="#b0bec5" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <DockPanel>
+                <StackPanel Background="#FFF6a5" Grid.Row="0" VerticalAlignment="Top" DockPanel.Dock="Bottom">
+                    <Image Source="../logo.png" Height="113"/>
+                </StackPanel>
+            </DockPanel>
+
+            <TextBlock Text="Добавление нового клиента" FontSize="32" Grid.Row="1"
+                   FontWeight="Medium" HorizontalAlignment="Center" Foreground="#37474f" Margin="505,23,504,599"/>
+
+            <TextBlock Text="Имя" Foreground="#546E7A" FontSize="24" Grid.Row="1"
+                       Margin="50,139,1328,500" />
+
+            <TextBox Name="TbName" Grid.Row="1" Margin="204,131,872,492" Background="#eceff1" Text="{Binding Path= MiddleName}"  FontSize="24">
+                <TextBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+            <Button Content="Отмена" HorizontalAlignment="Right" Grid.Row="4" VerticalAlignment="Center" Height="40" Width="150"
+                FontSize="20" Foreground="#263238" Background="#04A0FF" Margin="0,36,16,36" Click="Button_Click_1" >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Content="Добавить" HorizontalAlignment="Right" Grid.Row="4" VerticalAlignment="Center" Height="40" Width="150"
+                FontSize="20" Foreground="#263238" Background="#04A0FF" Margin="0,36,200,36" Click="Button_Click"  >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <TextBlock Text="Фамилия" Foreground="#546E7A" FontSize="24"  Grid.Row="1"
+                Margin="50,233,1274,406"/>
+            <TextBox x:Name="TbLastName" Grid.Row="1" Text="{Binding Path = FirstName}" Margin="204,223,872,398" Background="#eceff1" FontSize="24" >
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBlock Text="Отчество" Foreground="#546E7A" FontSize="24" Grid.Row="1"
+                Margin="50,325,1274,314"/>
+            <TextBox x:Name="TbMiddledName" Text="{Binding Path =LastName}" Grid.Row="1" Margin="204,315,872,306" Background="#eceff1" FontSize="24">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBlock Text="Доля" Foreground="#546E7A" FontSize="24" Grid.Row="1"
+                Margin="50,423,1274,216"/>
+            <TextBox x:Name="TbDeals" Grid.Row="1" Text="{Binding Path = DealShare}" Margin="204,413,872,208" Background="#eceff1" FontSize="24">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+        </Grid>
+    </Grid>
+</Page>

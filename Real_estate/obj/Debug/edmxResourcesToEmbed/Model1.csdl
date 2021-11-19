@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Real_estate_RitaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Agents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DealShare" Type="Int32" />
+    <NavigationProperty Name="Demands" Relationship="Self.FK_Demands_Agents" FromRole="Agents" ToRole="Demands" />
+    <NavigationProperty Name="Supplies" Relationship="Self.FK_Supplies_Agents" FromRole="Agents" ToRole="Supplies" />
+  </EntityType>
+  <EntityType Name="Apartment_demands">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDemands" Type="Int64" />
+    <Property Name="MinArea" Type="Double" />
+    <Property Name="MaxArea" Type="Double" />
+    <Property Name="MinRooms" Type="Int32" />
+    <Property Name="MaxRooms" Type="Int32" />
+    <Property Name="MinFloor" Type="Int32" />
+    <Property Name="MaxFloor" Type="Int32" />
+    <NavigationProperty Name="Demands" Relationship="Self.FK_Apartment_demands_Demands" FromRole="Apartment_demands" ToRole="Demands" />
+  </EntityType>
+  <EntityType Name="Apartments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdObject" Type="Int64" />
+    <Property Name="Rooms" Type="Int32" />
+    <Property Name="Floor" Type="Int32" />
+    <NavigationProperty Name="Object_of_realEstate" Relationship="Real_estate_RitaModel.FK_Apartments_Object_of_realEstate" FromRole="Apartments" ToRole="Object_of_realEstate" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Demands" Relationship="Self.FK_Demands_Clients" FromRole="Clients" ToRole="Demands" />
+    <NavigationProperty Name="Supplies" Relationship="Self.FK_Supplies_Clients" FromRole="Clients" ToRole="Supplies" />
+  </EntityType>
+  <EntityType Name="Deals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Demand_Id" Type="Int64" />
+    <Property Name="Supply_Id" Type="Int64" />
+    <NavigationProperty Name="Demands" Relationship="Self.FK_Deals_Demands" FromRole="Deals" ToRole="Demands" />
+    <NavigationProperty Name="Supplies" Relationship="Self.FK_Deals_Supplies" FromRole="Deals" ToRole="Supplies" />
+  </EntityType>
+  <EntityType Name="Demands">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgentId" Type="Int64" Nullable="false" />
+    <Property Name="ClientId" Type="Int64" Nullable="false" />
+    <Property Name="ObjectID" Type="Int64" Nullable="false" />
+    <Property Name="Address_City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address_Street" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address_House" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MinPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="MaxPrice" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Agents" Relationship="Self.FK_Demands_Agents" FromRole="Demands" ToRole="Agents" />
+    <NavigationProperty Name="Apartment_demands" Relationship="Self.FK_Apartment_demands_Demands" FromRole="Demands" ToRole="Apartment_demands" />
+    <NavigationProperty Name="Clients" Relationship="Self.FK_Demands_Clients" FromRole="Demands" ToRole="Clients" />
+    <NavigationProperty Name="Deals" Relationship="Self.FK_Deals_Demands" FromRole="Demands" ToRole="Deals" />
+    <NavigationProperty Name="House_demands" Relationship="Self.FK_House_demands_Demands" FromRole="Demands" ToRole="House_demands" />
+    <NavigationProperty Name="Land_demands" Relationship="Self.FK_Land_demands_Demands" FromRole="Demands" ToRole="Land_demands" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Area" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Object_of_realEstate" Relationship="Real_estate_RitaModel.FK_Object_of_realEstate_District" FromRole="District" ToRole="Object_of_realEstate" />
+  </EntityType>
+  <EntityType Name="House_demands">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDemands" Type="Int64" />
+    <Property Name="MinFloors" Type="Int32" />
+    <Property Name="MaxFloors" Type="Int32" />
+    <Property Name="MinArea" Type="Double" />
+    <Property Name="MaxArea" Type="Double" />
+    <Property Name="MinRooms" Type="Int32" />
+    <Property Name="MaxRooms" Type="Int32" />
+    <NavigationProperty Name="Demands" Relationship="Self.FK_House_demands_Demands" FromRole="House_demands" ToRole="Demands" />
+  </EntityType>
+  <EntityType Name="Houses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdObject" Type="Int64" />
+    <Property Name="TotalFloor" Type="Int32" />
+    <Property Name="Rooms" Type="Int32" />
+    <NavigationProperty Name="Object_of_realEstate" Relationship="Real_estate_RitaModel.FK_Houses_Object_of_realEstate" FromRole="Houses" ToRole="Object_of_realEstate" />
+  </EntityType>
+  <EntityType Name="Land_demands">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDemands" Type="Int64" />
+    <Property Name="MinArea" Type="Double" />
+    <Property Name="MaxArea" Type="Double" />
+    <NavigationProperty Name="Demands" Relationship="Self.FK_Land_demands_Demands" FromRole="Land_demands" ToRole="Demands" />
+  </EntityType>
+  <EntityType Name="Lands">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdObject" Type="Int64" />
+    <NavigationProperty Name="Object_of_realEstate" Relationship="Real_estate_RitaModel.FK_Lands_Object_of_realEstate" FromRole="Lands" ToRole="Object_of_realEstate" />
+  </EntityType>
+  <EntityType Name="Supplies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="AgentId" Type="Int64" />
+    <Property Name="ClientId" Type="Int64" />
+    <Property Name="RealEstateId" Type="Int64" />
+    <NavigationProperty Name="Agents" Relationship="Self.FK_Supplies_Agents" FromRole="Supplies" ToRole="Agents" />
+    <NavigationProperty Name="Clients" Relationship="Self.FK_Supplies_Clients" FromRole="Supplies" ToRole="Clients" />
+    <NavigationProperty Name="Deals" Relationship="Self.FK_Deals_Supplies" FromRole="Supplies" ToRole="Deals" />
+  </EntityType>
+  <EntityType Name="Type_of_object">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Object_of_realEstate" Relationship="Real_estate_RitaModel.FK_Object_of_realEstate_Type_of_object" FromRole="Type_of_object" ToRole="Object_of_realEstate" />
+  </EntityType>
+  <Association Name="FK_Demands_Agents">
+    <End Role="Agents" Type="Self.Agents" Multiplicity="1" />
+    <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agents">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demands">
+        <PropertyRef Name="AgentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplies_Agents">
+    <End Role="Agents" Type="Self.Agents" Multiplicity="0..1" />
+    <End Role="Supplies" Type="Self.Supplies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agents">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Supplies">
+        <PropertyRef Name="AgentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartment_demands_Demands">
+    <End Role="Demands" Type="Self.Demands" Multiplicity="0..1" />
+    <End Role="Apartment_demands" Type="Self.Apartment_demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Demands">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartment_demands">
+        <PropertyRef Name="IdDemands" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demands_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demands">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplies_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+    <End Role="Supplies" Type="Self.Supplies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Supplies">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deals_Demands">
+    <End Role="Demands" Type="Self.Demands" Multiplicity="0..1" />
+    <End Role="Deals" Type="Self.Deals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Demands">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deals">
+        <PropertyRef Name="Demand_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deals_Supplies">
+    <End Role="Supplies" Type="Self.Supplies" Multiplicity="0..1" />
+    <End Role="Deals" Type="Self.Deals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deals">
+        <PropertyRef Name="Supply_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_House_demands_Demands">
+    <End Role="Demands" Type="Self.Demands" Multiplicity="0..1" />
+    <End Role="House_demands" Type="Self.House_demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Demands">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="House_demands">
+        <PropertyRef Name="IdDemands" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Land_demands_Demands">
+    <End Role="Demands" Type="Self.Demands" Multiplicity="0..1" />
+    <End Role="Land_demands" Type="Self.Land_demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Demands">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Land_demands">
+        <PropertyRef Name="IdDemands" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Real_estate_RitaEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Agents" EntityType="Self.Agents" />
+    <EntitySet Name="Apartment_demands" EntityType="Self.Apartment_demands" />
+    <EntitySet Name="Apartments" EntityType="Self.Apartments" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" />
+    <EntitySet Name="Deals" EntityType="Self.Deals" />
+    <EntitySet Name="Demands" EntityType="Self.Demands" />
+    <EntitySet Name="District" EntityType="Self.District" />
+    <EntitySet Name="House_demands" EntityType="Self.House_demands" />
+    <EntitySet Name="Houses" EntityType="Self.Houses" />
+    <EntitySet Name="Land_demands" EntityType="Self.Land_demands" />
+    <EntitySet Name="Lands" EntityType="Self.Lands" />
+    <EntitySet Name="Supplies" EntityType="Self.Supplies" />
+    <EntitySet Name="Type_of_object" EntityType="Self.Type_of_object" />
+    <AssociationSet Name="FK_Demands_Agents" Association="Self.FK_Demands_Agents">
+      <End Role="Agents" EntitySet="Agents" />
+      <End Role="Demands" EntitySet="Demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplies_Agents" Association="Self.FK_Supplies_Agents">
+      <End Role="Agents" EntitySet="Agents" />
+      <End Role="Supplies" EntitySet="Supplies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartment_demands_Demands" Association="Self.FK_Apartment_demands_Demands">
+      <End Role="Demands" EntitySet="Demands" />
+      <End Role="Apartment_demands" EntitySet="Apartment_demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demands_Clients" Association="Self.FK_Demands_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Demands" EntitySet="Demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplies_Clients" Association="Self.FK_Supplies_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Supplies" EntitySet="Supplies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deals_Demands" Association="Self.FK_Deals_Demands">
+      <End Role="Demands" EntitySet="Demands" />
+      <End Role="Deals" EntitySet="Deals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deals_Supplies" Association="Self.FK_Deals_Supplies">
+      <End Role="Supplies" EntitySet="Supplies" />
+      <End Role="Deals" EntitySet="Deals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_House_demands_Demands" Association="Self.FK_House_demands_Demands">
+      <End Role="Demands" EntitySet="Demands" />
+      <End Role="House_demands" EntitySet="House_demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Land_demands_Demands" Association="Self.FK_Land_demands_Demands">
+      <End Role="Demands" EntitySet="Demands" />
+      <End Role="Land_demands" EntitySet="Land_demands" />
+    </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="Real_estate_RitaModel.sysdiagrams" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Real_estate_RitaModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Real_estate_RitaModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Object_of_realEstate" EntityType="Real_estate_RitaModel.Object_of_realEstate" />
+    <AssociationSet Name="FK_Apartments_Object_of_realEstate" Association="Real_estate_RitaModel.FK_Apartments_Object_of_realEstate">
+      <End Role="Object_of_realEstate" EntitySet="Object_of_realEstate" />
+      <End Role="Apartments" EntitySet="Apartments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Object_of_realEstate_District" Association="Real_estate_RitaModel.FK_Object_of_realEstate_District">
+      <End Role="District" EntitySet="District" />
+      <End Role="Object_of_realEstate" EntitySet="Object_of_realEstate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Houses_Object_of_realEstate" Association="Real_estate_RitaModel.FK_Houses_Object_of_realEstate">
+      <End Role="Object_of_realEstate" EntitySet="Object_of_realEstate" />
+      <End Role="Houses" EntitySet="Houses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lands_Object_of_realEstate" Association="Real_estate_RitaModel.FK_Lands_Object_of_realEstate">
+      <End Role="Object_of_realEstate" EntitySet="Object_of_realEstate" />
+      <End Role="Lands" EntitySet="Lands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Object_of_realEstate_Type_of_object" Association="Real_estate_RitaModel.FK_Object_of_realEstate_Type_of_object">
+      <End Role="Type_of_object" EntitySet="Type_of_object" />
+      <End Role="Object_of_realEstate" EntitySet="Object_of_realEstate" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Object_of_realEstate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Address_City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address_Street" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address_House" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="TotalArea" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TypeId" Type="Int64" />
+    <Property Name="DistrictId" Type="Int64" />
+    <NavigationProperty Name="Apartments" Relationship="Real_estate_RitaModel.FK_Apartments_Object_of_realEstate" FromRole="Object_of_realEstate" ToRole="Apartments" />
+    <NavigationProperty Name="District" Relationship="Real_estate_RitaModel.FK_Object_of_realEstate_District" FromRole="Object_of_realEstate" ToRole="District" />
+    <NavigationProperty Name="Houses" Relationship="Real_estate_RitaModel.FK_Houses_Object_of_realEstate" FromRole="Object_of_realEstate" ToRole="Houses" />
+    <NavigationProperty Name="Lands" Relationship="Real_estate_RitaModel.FK_Lands_Object_of_realEstate" FromRole="Object_of_realEstate" ToRole="Lands" />
+    <NavigationProperty Name="Type_of_object" Relationship="Real_estate_RitaModel.FK_Object_of_realEstate_Type_of_object" FromRole="Object_of_realEstate" ToRole="Type_of_object" />
+  </EntityType>
+  <Association Name="FK_Apartments_Object_of_realEstate">
+    <End Type="Real_estate_RitaModel.Object_of_realEstate" Role="Object_of_realEstate" Multiplicity="0..1" />
+    <End Type="Real_estate_RitaModel.Apartments" Role="Apartments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Object_of_realEstate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartments">
+        <PropertyRef Name="IdObject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Object_of_realEstate_District">
+    <End Type="Real_estate_RitaModel.District" Role="District" Multiplicity="0..1" />
+    <End Type="Real_estate_RitaModel.Object_of_realEstate" Role="Object_of_realEstate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Object_of_realEstate">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Houses_Object_of_realEstate">
+    <End Type="Real_estate_RitaModel.Object_of_realEstate" Role="Object_of_realEstate" Multiplicity="0..1" />
+    <End Type="Real_estate_RitaModel.Houses" Role="Houses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Object_of_realEstate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Houses">
+        <PropertyRef Name="IdObject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lands_Object_of_realEstate">
+    <End Type="Real_estate_RitaModel.Object_of_realEstate" Role="Object_of_realEstate" Multiplicity="0..1" />
+    <End Type="Real_estate_RitaModel.Lands" Role="Lands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Object_of_realEstate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lands">
+        <PropertyRef Name="IdObject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Object_of_realEstate_Type_of_object">
+    <End Type="Real_estate_RitaModel.Type_of_object" Role="Type_of_object" Multiplicity="0..1" />
+    <End Type="Real_estate_RitaModel.Object_of_realEstate" Role="Object_of_realEstate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_of_object">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Object_of_realEstate">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

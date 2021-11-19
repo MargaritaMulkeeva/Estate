@@ -1,0 +1,18 @@
+﻿<Window x:Class="Real_estate.Cap"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Real_estate"
+        mc:Ignorable="d"
+        Title="Cap" Height="900" Width="1440">
+    <Grid>
+        <DockPanel>
+            <StackPanel Background="#FFF6a5" Height="90" VerticalAlignment="Top" DockPanel.Dock="Bottom">
+                <Image Source="logo.png" Height="90"/>
+            </StackPanel>
+        </DockPanel>
+
+        <Frame x:Name="frameCap"/>
+    </Grid>
+</Window>
