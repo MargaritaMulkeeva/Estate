@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-W:\!Личная\ПП.11.01 Разработка приложения\Real_estate\Real_estate\obj\Debug\
+E:\Практика создания прлож\Estate\Real_estate\obj\Debug\
 Real_estate
 none
 false
 DEBUG;TRACE
-W:\!Личная\ПП.11.01 Разработка приложения\Real_estate\Real_estate\App.xaml
-14-1861370514
+E:\Практика создания прлож\Estate\Real_estate\App.xaml
+161049415699
 21750853300
-401978692688
-181749690712
-AddPages\AddAgentsPage.xaml;AddPages\AddClientsPage.xaml;AddPages\AddDealsPage.xaml;ClientPage.xaml;DealPage.xaml;DemandsPage.xaml;EditPage\EditAgentsPage.xaml;EditPage\EditClientsPage.xaml;MainWindow.xaml;MenuPage.xaml;Object_reatEstatePage.xaml;RealtorsPage.xaml;SplashScreen.xaml;SuppliesPage.xaml;
+42-374512497
+18-533894046
+AddPages\AddAgentsPage.xaml;AddPages\AddClientsPage.xaml;AddPages\AddDealsPage.xaml;AddPages\AddObjectPage.xaml;ClientPage.xaml;DealPage.xaml;DemandsPage.xaml;EditPage\EditAgentsPage.xaml;EditPage\EditClientsPage.xaml;EditPage\EditObjectPage.xaml;MainWindow.xaml;MenuPage.xaml;Object_reatEstatePage.xaml;RealtorsPage.xaml;SplashScreen.xaml;SuppliesPage.xaml;
 
 True
 

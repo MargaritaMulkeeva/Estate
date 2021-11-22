@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Real_estate"
       mc:Ignorable="d" 
     d:DesignHeight="900" d:DesignWidth="1440"
-      Title="ClientPage" Height="900" Width="1440" >
+      Title="ClientPage" Height="900" Width="1440" IsVisibleChanged="Page_IsVisibleChanged" >
 
 
     <Grid Background="#b0bec5" >
@@ -40,7 +40,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <DataGrid Name="DGridDistrict" Grid.Row="1" IsReadOnly="False" Grid.ColumnSpan="3" AutoGenerateColumns="False" Margin="16 180 16 0" >
+        <DataGrid Name="DGridObject" Grid.Row="1" IsReadOnly="False" Grid.ColumnSpan="3" AutoGenerateColumns="False" Margin="16 180 16 0" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="30"/>
                 <DataGridTextColumn Header="Город" Binding="{Binding Address_City}" Width="*"/>
@@ -54,7 +54,7 @@
         </DataGrid>
 
         <Button Content="Назад" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center" Height="40" Width="150"
-                FontSize="20" Foreground="#263238" Background="#04A0FF"  Margin="0 0 16 0" >
+                FontSize="20" Foreground="#263238" Background="#04A0FF"  Margin="0 0 16 0" Click="Button_Click" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -63,7 +63,7 @@
         </Button>
 
         <Button Content="Добавить" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center" Height="40" Width="150"
-                FontSize="20" Foreground="#263238" Background="#04A0FF" Margin="0,36,208,36" >
+                FontSize="20" Foreground="#263238" Background="#04A0FF" Margin="0,36,208,36" Click="Button_Click_1" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -72,7 +72,7 @@
         </Button>
 
         <Button Content="Удалить" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center" Height="40" Width="150"
-                FontSize="20" Foreground="#263238" Background="#04A0FF" Margin="0,36,405,36" >
+                FontSize="20" Foreground="#263238" Background="#04A0FF" Margin="0,36,405,36" Click="Button_Click_2" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -80,7 +80,7 @@
             </Button.Resources>
         </Button>
         <Button Content="Изменить" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center" Height="40" Width="150"
-            FontSize="20" Foreground="#263238" Background="#04A0FF" Margin="0,36,611,36"  >
+            FontSize="20" Foreground="#263238" Background="#04A0FF" Margin="0,36,611,36" Click="Button_Click_3"  >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>

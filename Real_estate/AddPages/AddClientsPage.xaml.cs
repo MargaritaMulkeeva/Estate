@@ -38,7 +38,6 @@ namespace Real_estate.AddPages
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
             if ((TbEmail.Text == "" && TbPhone.Text != "") || (TbEmail.Text != "" && TbPhone.Text == "") || (TbEmail.Text != "" && TbPhone.Text != ""))
             {
                 if (_currentClients.Id == 0)

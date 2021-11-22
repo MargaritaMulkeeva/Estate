@@ -39,7 +39,7 @@
             </Button.Resources>
         </Button>
 
-        <DataGrid Name="DGridDeals" Grid.Row="1" IsReadOnly="False" AutoGenerateColumns="False" Margin="548,180,548,0" >
+        <DataGrid Name="DGridDeals" Grid.Row="1" IsReadOnly="False" AutoGenerateColumns="False" Margin="391,180,388,0" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="30"/>
                 <DataGridTextColumn Header="Потребность" Binding="{Binding Demand_Id}" Width="*"/>
